@@ -1,12 +1,5 @@
-const { MongoClient } = require("mongodb");
-const { uri } = require("./utils");
-
-const client = new MongoClient(uri);
-
-async function run(keyword) {
+async function run(keyword, client) {
   try {
-    await client.connect();
-
     //set namespace
     const database = client.db("sample_mflix");
     const coll = database.collection("movies");
@@ -39,8 +32,6 @@ async function run(keyword) {
     return data;
   } catch (err) {
     console.log(err);
-  } finally {
-    await client.close();
   }
 }
 

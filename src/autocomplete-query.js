@@ -19,8 +19,22 @@ async function run(keyword, client) {
       },
       {
         $project: {
-          _id: 0,
+          plot: 1,
+          genres: 1,
+          runtime: 1,
+          cast: 1,
+          poster: 1,
           title: 1,
+          fullplot: 1,
+          languages: 1,
+          directors: 1,
+          rated: 1,
+          awards: 1,
+          year: 1,
+          countries: 1,
+          imdb: 1,
+          type: 1,
+          tomatoes: 1,
         },
       },
     ];
@@ -31,7 +45,7 @@ async function run(keyword, client) {
     await result.forEach((doc) => data.push(doc));
     return data;
   } catch (err) {
-    console.log(err);
+    console.log(err.message);
   }
 }
 
